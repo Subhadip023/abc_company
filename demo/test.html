@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Three Column Page</title>
+    <style>
+        .column {
+            display: none;
+        }
+    </style>
+    <script>
+        window.onload = function() {
+            // Get references to the column headers
+            var columnHeaders = document.querySelectorAll('.column-header');
+            
+            // Get the first column and display it by default
+            var defaultColumn = document.querySelector(columnHeaders[0].getAttribute('href'));
+            defaultColumn.style.display = 'block';
+            
+            // Attach click event listeners to each header
+            for (var i = 0; i < columnHeaders.length; i++) {
+                columnHeaders[i].addEventListener('click', function(e) {
+                    e.preventDefault(); // Prevent the default behavior of the anchor tag
+                    
+                    var target = document.querySelector(this.getAttribute('href'));
+                    
+                    // Hide all columns
+                    var columns = document.querySelectorAll('.column');
+                    for (var j = 0; j < columns.length; j++) {
+                        columns[j].style.display = 'none';
+                    }
+                    
+                    // Show the clicked column
+                    target.style.display = 'block';
+                });
+            }
+        };
+    </script>
+</head>
+<body>
+    <h1>Three Column Page</h1>
+    <div class="header-container">
+        <a href="#column1" class="column-header">Column 1</a>
+        <a href="#column2" class="column-header">Column 2</a>
+        <a href="#column3" class="column-header">Column 3</a>
+    </div>
+    <div class="content-container">
+        <div class="column" id="column1">
+            <h2>Column 1 Content</h2>
+            <p>This is the content for column 1.</p>
+        </div>
+        <div class="column" id="column2">
+            <h2>Column 2 Content</h2>
+            <p>This is the content for column 2.</p>
+        </div>
+        <div class="column" id="column3">
+            <h2>Column 3 Content</h2>
+            <p>This is the content for column 3.</p>
+        </div>
+    </div>
+</body>
+</html>

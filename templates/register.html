@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    
+<div class="container my-4">
+    <h1>Fill the form</h1>
+    <form method='POST' action='/contact'> <!-- Set the action attribute to '/' -->
+      <div class="mb-3">
+        <label for="title" class="form-label">Name</label>
+        <input type="text" class="form-control" name="name" aria-describedby="emailHelp">
+      </div>
+      <div class="mb-3">
+        <label for="dec" class="form-label">Email</label>
+        <input type="text" class="form-control" name="email" aria-describedby="emailHelp">
+      </div>
+      <div class="mb-3">
+        <label for="title" class="form-label">Phone Number</label>
+        <input type="Number" class="form-control" name="phone" aria-describedby="emailHelp">
+      </div>
+      <div class="mb-3">
+        <label for="title" class="form-label">Password</label>
+        <input type="Password" class="form-control" name="password" aria-describedby="emailHelp">
+      </div>
+      <button type="submit" >Submit</button>
+    </form>
+  </div>
+  {% endblock %}

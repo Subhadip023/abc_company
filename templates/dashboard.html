@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block body %}
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">phone</th>
+        <th scope="col">email</th>
+        <th scope="col">Date</th>
+        <th scope="col">Items Buy</th>
+      </tr>
+    </thead>
+    <tbody>  
+        {% for data in alldata %}
+        <tr>
+            <th scope="row">{{loop.index}}</th>
+            <td>{{data.name}}</td>
+            <td>{{data.phone}}</td>
+            <td>{{data.email}}</td>
+            <td>{{data.date}}</td>
+            <td>{{data.item}}</td>
+         
+          
+            
+            
+        </tr>
+        </tbody>{% endfor %}
+      </table>
+        {% endblock %}

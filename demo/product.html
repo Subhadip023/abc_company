@@ -1,0 +1,198 @@
+<!doctype html>
+<html>
+<head>
+    <style>
+        .column {
+            display:none;
+        }
+        .flex-grow border-b-2 border-gray-800 py-2 text-lg px-1 onhover {
+            color: rgba(1, 1, 82, 0.199);
+        }
+
+    </style>
+    <script>
+        window.onload = function() {
+            // Get references to the column headers
+            var columnHeaders = document.querySelectorAll('.flex-grow border-b-2 border-gray-800 py-2 text-lg px-1');
+            
+            // Attach click event listeners to each header
+            for (var i = 0; i < columnHeaders.length; i++) {
+                columnHeaders[i].addEventListener('click', function(e) {
+                    e.preventDefault(); // Prevent the default behavior of the anchor tag
+                    
+                    var target = document.querySelector(this.getAttribute('href'));
+                    
+                    // Hide all columns
+                    var columns = document.querySelectorAll('.flex-grow border-b-2 border-gray-800 py-2 text-lg px-1');
+                    for (var j = 0; j < columns.length; j++) {
+                        columns[j].style.display = 'none';
+                    }
+                    
+                    // Show the clicked column
+                    target.style.display = 'block';
+                });
+            }
+        };
+    </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <section class="text-gray-400 bg-gray-900 body-font overflow-hidden">
+        <div class="container px-5 py-24 mx-auto">
+          <div class="lg:w-4/5 mx-auto flex flex-wrap">
+            <div class="lg:w-1/2 w-full lg:pr-10 lg:py-6 mb-6 lg:mb-0">
+              <h2 class="text-sm title-font text-gray-500 tracking-widest">BRAND NAME</h2>
+              <h1 class="text-white text-3xl title-font font-medium mb-4">Animated Night Hill Illustrations</h1>
+              <div class="flex mb-4">
+                <a class="flex-grow border-b-2 border-gray-800 py-2 text-lg px-1" href="#c1">Description</a>
+                <a class="flex-grow border-b-2 border-gray-800 py-2 text-lg px-1">Reviews</a>
+                <a class="flex-grow border-b-2 border-gray-800 py-2 text-lg px-1">Details</a>
+              </div>
+                <div class="column" id="c1">
+                    <p class="leading-relaxed mb-4">Fam locavore kickstarter distillery. Mixtape chillwave tumeric sriracha taximy chia microdosing tilde DIY. XOXO fam iligo juiceramps cornhole raw denim forage brooklyn. Everyday carry +1 seitan poutine tumeric. Gastropub blue bottle austin listicle pour-over, neutra jean.</p>
+                    <div class="flex border-t border-gray-800 py-2">
+                      <span class="text-gray-500">Color</span>
+                      <span class="ml-auto text-white">Blue</span>
+                    </div>
+                    <div class="flex border-t border-gray-800 py-2">
+                      <span class="text-gray-500">Size</span>
+                      <span class="ml-auto text-white">Medium</span>
+                    </div>
+                    <div class="flex border-t border-b mb-6 border-gray-800 py-2">
+                      <span class="text-gray-500">Quantity</span>
+                      <span class="ml-auto text-white">4</span>
+                    </div>
+                    <div class="flex">
+                      <span class="title-font font-medium text-2xl text-white">$58.00</span>
+                      <button class="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">Button</button>
+                      <button class="rounded-full w-10 h-10 bg-gray-800 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
+                        <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                          <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path>
+                        </svg>
+                      </button>
+                      </div>
+              </div>
+            </div>
+            <img alt="ecommerce" class="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded" src="https://dummyimage.com/400x400">
+          </div>
+        </div>
+      </section>
+
+      <footer class="text-gray-400 bg-gray-900 body-font">
+        <div class="container px-5 py-24 mx-auto flex md:items-center lg:items-start md:flex-row md:flex-nowrap flex-wrap flex-col">
+          <div class="w-64 flex-shrink-0 md:mx-0 mx-auto text-center md:text-left">
+            <a class="flex title-font font-medium items-center md:justify-start justify-center text-white">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 bg-indigo-500 rounded-full" viewBox="0 0 24 24">
+                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+              </svg>
+              <span class="ml-3 text-xl">Tailblocks</span>
+            </a>
+            <p class="mt-2 text-sm text-gray-500">Air plant banjo lyft occupy retro adaptogen indego</p>
+          </div>
+          <div class="flex-grow flex flex-wrap md:pl-20 -mb-10 md:mt-0 mt-10 md:text-left text-center">
+            <div class="lg:w-1/4 md:w-1/2 w-full px-4">
+              <h2 class="title-font font-medium text-white tracking-widest text-sm mb-3">CATEGORIES</h2>
+              <nav class="list-none mb-10">
+                <li>
+                  <a class="text-gray-400 hover:text-white">First Link</a>
+                </li>
+                <li>
+                  <a class="text-gray-400 hover:text-white">Second Link</a>
+                </li>
+                <li>
+                  <a class="text-gray-400 hover:text-white">Third Link</a>
+                </li>
+                <li>
+                  <a class="text-gray-400 hover:text-white">Fourth Link</a>
+                </li>
+              </nav>
+            </div>
+            <div class="lg:w-1/4 md:w-1/2 w-full px-4">
+              <h2 class="title-font font-medium text-white tracking-widest text-sm mb-3">CATEGORIES</h2>
+              <nav class="list-none mb-10">
+                <li>
+                  <a class="text-gray-400 hover:text-white">First Link</a>
+                </li>
+                <li>
+                  <a class="text-gray-400 hover:text-white">Second Link</a>
+                </li>
+                <li>
+                  <a class="text-gray-400 hover:text-white">Third Link</a>
+                </li>
+                <li>
+                  <a class="text-gray-400 hover:text-white">Fourth Link</a>
+                </li>
+              </nav>
+            </div>
+            <div class="lg:w-1/4 md:w-1/2 w-full px-4">
+              <h2 class="title-font font-medium text-white tracking-widest text-sm mb-3">CATEGORIES</h2>
+              <nav class="list-none mb-10">
+                <li>
+                  <a class="text-gray-400 hover:text-white">First Link</a>
+                </li>
+                <li>
+                  <a class="text-gray-400 hover:text-white">Second Link</a>
+                </li>
+                <li>
+                  <a class="text-gray-400 hover:text-white">Third Link</a>
+                </li>
+                <li>
+                  <a class="text-gray-400 hover:text-white">Fourth Link</a>
+                </li>
+              </nav>
+            </div>
+            <div class="lg:w-1/4 md:w-1/2 w-full px-4">
+              <h2 class="title-font font-medium text-white tracking-widest text-sm mb-3">CATEGORIES</h2>
+              <nav class="list-none mb-10">
+                <li>
+                  <a class="text-gray-400 hover:text-white">First Link</a>
+                </li>
+                <li>
+                  <a class="text-gray-400 hover:text-white">Second Link</a>
+                </li>
+                <li>
+                  <a class="text-gray-400 hover:text-white">Third Link</a>
+                </li>
+                <li>
+                  <a class="text-gray-400 hover:text-white">Fourth Link</a>
+                </li>
+              </nav>
+            </div>
+          </div>
+        </div>
+        <div class="bg-gray-800 bg-opacity-75">
+          <div class="container mx-auto py-4 px-5 flex flex-wrap flex-col sm:flex-row">
+            <p class="text-gray-400 text-sm text-center sm:text-left">© 2020 Tailblocks —
+              <a href="https://twitter.com/knyttneve" rel="noopener noreferrer" class="text-gray-500 ml-1" target="_blank">@knyttneve</a>
+            </p>
+            <span class="inline-flex sm:ml-auto sm:mt-0 mt-2 justify-center sm:justify-start">
+              <a class="text-gray-400">
+                <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                  <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
+                </svg>
+              </a>
+              <a class="ml-3 text-gray-400">
+                <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                  <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"></path>
+                </svg>
+              </a>
+              <a class="ml-3 text-gray-400">
+                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                  <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+                  <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"></path>
+                </svg>
+              </a>
+              <a class="ml-3 text-gray-400">
+                <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="0" class="w-5 h-5" viewBox="0 0 24 24">
+                  <path stroke="none" d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"></path>
+                  <circle cx="4" cy="4" r="2" stroke="none"></circle>
+                </svg>
+              </a>
+            </span>
+          </div>
+        </div>
+      </footer>
+</body>
+</html>
