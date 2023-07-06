@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block body %}
+    
+<div class="container">
+
+    <form action="/addproducts" method="post" enctype="multipart/form-data">
+        <div class="input-group mb-3">
+            Upload photo of the products 
+        </div>
+        <div class="input-group mb-3">
+            <label class="input-group-text" for="inputGroupFile01">Upload</label>
+            <input type="file" class="form-control" id="inputGroupFile01"name="imageUpload">
+          </div>
+
+          <div class="mb-3">
+            <label for="username" class="form-label">Product Name</label>
+            <input type="text" class="form-control" id="name" name="name">
+          </div>
+
+          <div class="mb-3">
+            <label for="username" class="form-label">Company Name</label>
+            <input type="text" class="form-control" id="company_name" name="company_name">
+          </div>
+
+          <div class="mb-3">
+            <label for="username" class="form-label">Number of products  Items</label>
+            <input type="number" class="form-control" id="item" name="item" value=1 default="1">
+          </div>
+
+          <div class="mb-3">
+            <label for="username" class="form-label">Prize(rs)</label>
+            <input type="Number" class="form-control" id="prize" name="prize">
+          </div>
+
+        <button type="submit" class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">Submit</button>
+
+      </form>
+      
+    </div>
+  {% endblock %}

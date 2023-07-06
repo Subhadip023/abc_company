@@ -1,27 +1,123 @@
 {% extends 'base.html' %}
 
 {% block body %}
-    
-<div class="container my-4">
-    <h1>Fill the form</h1>
-    <form method='POST' action='/contact'> <!-- Set the action attribute to '/' -->
-      <div class="mb-3">
-        <label for="title" class="form-label">Name</label>
-        <input type="text" class="form-control" name="name" aria-describedby="emailHelp">
-      </div>
-      <div class="mb-3">
-        <label for="dec" class="form-label">Email</label>
-        <input type="text" class="form-control" name="email" aria-describedby="emailHelp">
-      </div>
-      <div class="mb-3">
-        <label for="title" class="form-label">Phone Number</label>
-        <input type="Number" class="form-control" name="phone" aria-describedby="emailHelp">
-      </div>
-      <div class="mb-3">
-        <label for="title" class="form-label">Password</label>
-        <input type="Password" class="form-control" name="password" aria-describedby="emailHelp">
-      </div>
-      <button type="submit" >Submit</button>
-    </form>
+<div class="container my-4" >
+  <div style="padding-top: 20px;
+  padding-bottom: 20px;color:green;font-size:50px;">
+  <h1 >Log In</h1>
   </div>
-  {% endblock %}
+  <div style="padding-top:50px;">
+  <p >{{error_message}}</p>
+  
+  <form method='POST' action='/login' id="login-form">
+    <div class="mb-3">
+      <label for="email" class="form-label">Email</label>
+      <input type="email" class="form-control" name="email" required>
+    </div>
+   
+    <div class="mb-3">
+      <label for="password" class="form-label">Password</label>
+      <input type="password" class="form-control" name="password" id="password" required>
+      <div id="password-strength"></div>
+    </div>
+    <button type="submit" class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">Submit</button>
+
+  </form>
+</div>  
+</div>
+<div style="padding:100px;">
+  <h2 class="mb-3"> Don't have account</h2>
+  <a href='#register'> <h1 class="inline-flex text-white bg-green-500 border-0 py-2 px-6 focus:outline-none hover:bg-green-700 rounded text-lg" >Register now</h1> </a>
+
+</div>
+
+<section style="padding-top:500px;">
+  </section>
+
+<section id="register">
+
+<div class="container">
+  <div class="container my-4" >
+    <div style="padding-top: 20px;
+    padding-bottom: 20px;color:green;font-size:50px;">
+      <h1>Register</h1>
+      </div>
+
+    <p >{{error_message}}</p>
+    
+    <form method='POST' action='/register' id="registration-form">
+      <div class="mb-3">
+        <label for="name" class="form-label">Name</label>
+        <input type="text" class="form-control" name="name" required>
+      </div>
+      <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" class="form-control" name="email" required>
+      </div>
+      <div class="mb-3">
+        <label for="email_verification" class="form-label">Confirm Email</label>
+        <input type="email" class="form-control" name="email_verification" required>
+      </div>
+      <div class="mb-3">
+        <label for="phone" class="form-label">Phone Number</label>
+        <input type="tel" class="form-control" name="phone" required>
+      </div>
+      <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input type="password" class="form-control" name="password" id="password" required>
+        <div id="password-strength"></div>
+      </div>
+      <div class="mb-3">
+        <label for="confirm_password" class="form-label">Confirm Password</label>
+        <input type="password" class="form-control" name="confirm_password" required>
+      </div>
+      <button type="submit" class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">Submit</button>
+    </form>
+</div>
+</section>
+<script>
+  // Function to check password strength and provide feedback
+  function checkPasswordStrength() {
+    const passwordInput = document.getElementById("password");
+    const passwordStrength = document.getElementById("password-strength");
+
+    const password = passwordInput.value;
+
+    // Check password strength using your desired criteria
+    // You can adjust the rules based on your requirements
+    let strength = 0;
+
+    if (password.match(/[a-z]+/)) {
+      strength += 1;
+    }
+    if (password.match(/[A-Z]+/)) {
+      strength += 1;
+    }
+    if (password.match(/[0-9]+/)) {
+      strength += 1;
+    }
+    if (password.match(/[!@#$%^&*()]+/)) {
+      strength += 1;
+    }
+    if (password.length >= 8) {
+      strength += 1;
+    }
+
+    // Provide feedback based on password strength
+    if (password.length === 0) {
+      passwordStrength.innerHTML = "";
+    } else if (strength === 0) {
+      passwordStrength.innerHTML = "Weak password";
+    } else if (strength <= 2) {
+      passwordStrength.innerHTML = "Medium strength password";
+    } else {
+      passwordStrength.innerHTML = "Strong password";
+    }
+  }
+
+  // Attach event listener to password input field
+  const passwordInput = document.getElementById("password");
+  passwordInput.addEventListener("input", checkPasswordStrength);
+</script>
+
+{% endblock %}
