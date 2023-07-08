@@ -1,52 +1,123 @@
-# from flask import Flask, render_template, request, redirect
-# from flask_sqlalchemy import SQLAlchemy
-# from datetime import datetime
-# from werkzeug.security import generate_password_hash, check_password_hash  # Import password hashing functions
-# import bcrypt
+# # from flask import Flask, render_template, request, redirect
+# # from flask_sqlalchemy import SQLAlchemy
+# # from datetime import datetime
+# # from werkzeug.security import generate_password_hash, check_password_hash  # Import password hashing functions
+# # import bcrypt
 
-# # app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///User_data_base.db"
-# # db = SQLAlchemy(app)
-# # hashed_password = "pbkdf2:sha256:600000$bqx804hvyBCDgPKe$07ece25e7b1c7059d23ec5cfd95cb654164e6e5c5632bdebacc08010e502a4ae"
-# # password = 123456
+# # # app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///User_data_base.db"
+# # # db = SQLAlchemy(app)
+# # # hashed_password = "pbkdf2:sha256:600000$bqx804hvyBCDgPKe$07ece25e7b1c7059d23ec5cfd95cb654164e6e5c5632bdebacc08010e502a4ae"
+# # # password = 123456
 
-# # if check_password_hash(hashed_password, password):
-# #     # Password is correct
-# #     print("Password is correct")
-# # else:
-# #     # Password is incorrect
-# #     print("Password is incorrect")
+# # # if check_password_hash(hashed_password, password):
+# # #     # Password is correct
+# # #     print("Password is correct")
+# # # else:
+# # #     # Password is incorrect
+# # #     print("Password is incorrect")
 
-# # password = "123456"
-# # hashed_password = generate_password_hash(password, method='pbkdf2:sha256', salt_length=8)
-# # # print(hashed_password)
+# # # password = "123456"
+# # # hashed_password = generate_password_hash(password, method='pbkdf2:sha256', salt_length=8)
+# # # # print(hashed_password)
 
 
-# # password = "123456"
-# # # 
-# # if check_password_hash(hashed_password, password):
-# #     # Password is correct
-# #     print("Password is correct")
-# # else:
-# #     # Password is incorrect
-# #     print("Password is incorrect")
+# # # password = "123456"
+# # # # 
+# # # if check_password_hash(hashed_password, password):
+# # #     # Password is correct
+# # #     print("Password is correct")
+# # # else:
+# # #     # Password is incorrect
+# # #     print("Password is incorrect")
     
-# def check(password,hashed_password):
+# # def check(password,hashed_password):
     
-#     if check_password_hash(hashed_password, password):
-#     # Password is correct
-#         print("Password is correct")
-#     else:
-#     # Password is incorrect
-#         print("Password is incorrect")
+# #     if check_password_hash(hashed_password, password):
+# #     # Password is correct
+# #         print("Password is correct")
+# #     else:
+# #     # Password is incorrect
+# #         print("Password is incorrect")
         
-# if __name__ == '__main__':
-#     password = "123456"
-#     password1 = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
-#     # print(password1)
-#     hashed_password="pbkdf2:sha256:600000$5tyj7YDQ$6fc5996ce79e6018643021c21a0ecec4331abb051ae32cdf6d3bc60476494ca0"
-#     print(generate_password_hash(password1, method='pbkdf2:sha256', salt_length=8))
-#     hashed_password = generate_password_hash(password1, method='pbkdf2:sha256', salt_length=8)
-#     print(hashed_password)
-#     # check(password=password,hashed_password=hashed_password)
-x='home.jpg'
-print('.',x.split('.')[1])
+# # if __name__ == '__main__':
+# #     password = "123456"
+# #     password1 = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
+# #     # print(password1)
+# #     hashed_password="pbkdf2:sha256:600000$5tyj7YDQ$6fc5996ce79e6018643021c21a0ecec4331abb051ae32cdf6d3bc60476494ca0"
+# #     print(generate_password_hash(password1, method='pbkdf2:sha256', salt_length=8))
+# #     hashed_password = generate_password_hash(password1, method='pbkdf2:sha256', salt_length=8)
+# #     print(hashed_password)
+# #     # check(password=password,hashed_password=hashed_password)
+# x='home.jpg'
+# print('.',x.split('.')[1])
+from flask import Flask, render_template, request, redirect
+from flask_sqlalchemy import SQLAlchemy
+from datetime import datetime
+from werkzeug.security import generate_password_hash, check_password_hash  # Import password hashing functions
+from werkzeug.utils import secure_filename
+import time
+import smtplib
+import random
+import string
+
+
+
+# Verification email functions 
+# Generate the code (varificatio)
+def generate_verification_code(length=6):
+    # Generate a random numeric verification code
+    characters = string.digits
+    verification_code = ''.join(random.choice(characters) for _ in range(length))
+    return verification_code
+
+# *imp* this is used for send email
+def send_verification_email(email, verification_code):
+    # Set up the SMTP server
+    smtp_server = 'smtp.gmail.com'
+    smtp_port = 587
+    sender_email = 'gyaanhub8@gmail.com' # this is the companr email i use it for testing you have to change that 
+    sender_password = 'wezanipacxdxubzk' # this is not the password this is generated by '2-step varification '
+
+    # Compose the email message
+    subject = 'Email Verification'
+    body = f'Your verification code is: {verification_code}'
+    message = f'Subject: {subject}\n\n{body}'
+
+    # Initialize the server variable
+    server = None
+
+    try:
+        # Connect to the SMTP server
+        server = smtplib.SMTP(smtp_server, smtp_port)
+        server.starttls()
+        server.login(sender_email, sender_password)
+
+        # Send the verification email
+        server.sendmail(sender_email, email, message)
+        print('Verification email sent successfully!')
+    except Exception as e:
+        print('Error sending email:', str(e))
+    finally:
+        # Disconnect from the server if it exists
+        if server:
+            server.quit()
+
+def varify():
+    email ='subhadip240420@gmail.com'
+    varification_code=generate_verification_code()
+    print(varification_code)
+    send_verification_email(email=email,verification_code=varification_code)
+    # code=request.form['code']
+    code=input('Enter code')
+    print(code)
+    # print(varification_code)
+    if varification_code==code:
+        massage="Email  Verified WelCome To Home page "
+        # return render_template("/",massge=massage)
+        print(massage)
+    else:
+        error_message='Email not Verified try agin '
+        # 
+        print(error_message)    
+        
+varify()        

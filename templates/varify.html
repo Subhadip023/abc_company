@@ -1,10 +1,26 @@
 {% extends 'base.html' %}
 {% block body %}
-    <h1>Email Verification
-For :
-        {{email}}<br>
-     {{name}}<br>
-        {{password}}<br>
-        {{phone}}<br>
-    </h1>
+{{massge}}
+<form method='POST' action='/verify' >
+
+  <div class="mb-3">
+  <label for="password" class="form-label">Enert code </label>
+  <input type="text" class="form-control" name="code"  required>
+  <button type="submit" class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">Submit</button>
+
+</div>
+</form>
+      <style>
+        #code{
+            color:red;
+            width:100px;
+        }
+        
+        #login-form{
+            padding-left:25vw;
+        }
+
+
+
+      </style>
   {% endblock %}
